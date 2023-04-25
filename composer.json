@@ -1,4 +1,7 @@
 {
+     "authors": [{
+        "name": "Plamen"
+    }],
     "autoload": {
         "psr-4": {
             "Core\\Request\\":["core/request"]
