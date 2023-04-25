@@ -1,10 +1,13 @@
 {
-     "authors": [{
+    "authors": [{
         "name": "Plamen"
     }],
     "autoload": {
         "psr-4": {
             "Core\\Request\\":["core/request"]
         }
+    },
+    "require" : {
+        "lecture-32/homework" :"^1.0"
     }
 }
