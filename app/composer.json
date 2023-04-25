@@ -1,8 +1,0 @@
-{
-    "autoload": {
-        "psr-4": {
-            "core\\request\\":["Core/Request"],
-            "public\\index\\":["public/index"]
-        }
-    }
-}
