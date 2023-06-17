@@ -1,4 +1,4 @@
-@extends('layout.head')
+
 
 @section('title', 'CodeAcademy')
 

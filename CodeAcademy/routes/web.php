@@ -1,11 +1,15 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AppController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\CoursesController;
-use App\Http\Controllers\PartnersController ;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LectorsController ;
+use App\Http\Controllers\PartnersController ;
+use App\Http\Controllers\Api\StudentsController;
 
 
 /*
@@ -51,3 +55,23 @@ Route::get('/Courses', function(){
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/views',function(){
+    return view('views');
+});
+
+Route::get('/students',[StudentsController::class,'index']);
+Route::get('users',[AppController::class,'getUsers']);
+Route::get('render_db',[HomeController::class,'render']);
+Route::get('/session',[HomeController::class,'session']);
+Route::get('/demo',[HomeController::class,'demo'] );
+Route::get('/welcome',function(){
+    return view('welcome');
+});
+
+Route::get('/convert-currency', [ConverterController::class, 'convertCurrency']);
+Route::get('/exchange-rates', [ConverterController::class, 'showExchangeRates']);
+
+Route::resource('products',ProductController::class);
+
+
