@@ -1,6 +1,7 @@
-@extends('layouts.publicUserNavigation')
+@extends('layouts.app')
 @section('content')
-    <style> .center {
+    <style>
+        .center {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -19,5 +20,4 @@
             Morbi sagittis porttitor arcu non auctor. Mauris rhoncus maximus luctus.
         </p>
     </div>
-
 @endsection

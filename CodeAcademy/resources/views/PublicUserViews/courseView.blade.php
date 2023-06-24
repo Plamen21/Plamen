@@ -1,7 +1,8 @@
-@extends('layouts.publicUserNavigation')
+@extends('layouts.app')
 
 @section('content')
-    <style> .center {
+    <style>
+        .center {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -11,10 +12,10 @@
     </style>
     <div class=".center">
 
-        <h1 style="text-align: center">Course name: {{$title}} </h1>
+        <h1 style="text-align: center">Course name: {{ $title }} </h1>
         <p style="text-align: center;padding: 40px">
             <b>Course description:</b>
-            {{$description}}
+            {{ $description }}
         </p>
     </div>
 @endsection

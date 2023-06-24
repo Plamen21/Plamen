@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'student')
+@section('title', 'client')
 
 @section('content')
 
-    Hello Student!!!
+    Hello client!!!
 
 @endsection

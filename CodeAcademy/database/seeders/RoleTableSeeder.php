@@ -40,7 +40,7 @@ class RoleTableSeeder extends Seeder
             ],
             [
                 'user_id' =>4,
-                'role' => 'teacher',
+                'role' => 'trainer',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

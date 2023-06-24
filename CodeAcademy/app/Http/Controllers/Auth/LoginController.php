@@ -29,15 +29,18 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        
         $this->middleware(function ($request, $next) {
             if (auth()->check()) {
+               
                 $user = auth()->user();
+                
                 return $this->getRoleRedirect($user);
             }
-    
             return $next($request);
         })->except('logout');
     }
+
 
     protected function getRoleRedirect($user)
     {
@@ -50,59 +53,53 @@ class LoginController extends Controller
             return redirect()->route('student.index');
         case 'client':
             return redirect()->route('client.index');
-        case 'teacher':
-            return redirect()->route('teacher.index');
+        case 'trainer':
+            return redirect()->route('trainer.index');
         default:
             return redirect()->route('user.index');
     }
 }
 
+
+public function login(Request $request){
+
+    $credentials = $request ->validate([
+        'username' => 'required',
+        'password' => 'required',
+    ]);
+
+    if (Auth::attempt($credentials)) {
+        
+        $user = User::find(Auth::id());
+        
+        if ($user->hasRole('admin')) {
+           
+            return redirect()->route('admin.index');
+        } elseif ($user->hasRole('student')) {
+            
+            return redirect()->route('student.index');
+        } elseif ($user->hasRole('client')) {
+            
+            return redirect()->route('client.index');
+        } elseif ($user->hasRole('trainer')) {
+            
+            return redirect()->route('trainer.index');
+        } else {
+            
+            return redirect()->route('home');
+        }
+    } 
+    else {
+        
+        return back()->withErrors([
+            'email' => 'Invalid credentials',
+        ]);
+    }
 }
-// public function login(Request $request){
-
-//     $credentials = $request ->validate([
-//         'username' => 'required',
-//         'password' => 'required',
-//     ]);
-
-//     if (Auth::attempt($credentials)) {
-//         // Потребителят е успешно аутентикиран
-
-//         // Проверете ролята на потребителя
-//         // $user = User::find();
-//         // $user -> role ;
+    public function authenticate(){
         
-        
-//     //     if ($user->hasRole('admin')) {
-//     //         // Аутентикиран е администратор
-//     //         return redirect()->route('admin.dashboard');
-//     //     } elseif ($user->hasRole('student')) {
-//     //         // Аутентикиран е студент
-//     //         return redirect()->route('student.dashboard');
-//     //     } elseif ($user->hasRole('client')) {
-//     //         // Аутентикиран е клиент
-//     //         return redirect()->route('client.dashboard');
-//     //     } elseif ($user->hasRole('teacher')) {
-//     //         // Аутентикиран е учител
-//     //         return redirect()->route('teacher.dashboard');
-//     //     } else {
-//     //         // Аутентикиран е потребител (роля "user")
-//     //         return redirect()->route('home');
-//     //     }
-//     } 
-//     else {
-//         // Аутентикацията не бе успешна
-//         // Обработете грешката или покажете съобщение за неуспешен вход
-//         return back()->withErrors([
-//             'email' => 'Invalid credentials',
-//         ]);
-//     }
-// }
-//     // public function authenticate(){
-        
-//     //     $user = $this->guard()->user();
-//     //     return $this->getRoleRedirect($user);
+        $user = $this->guard()->user();
+        return $this->getRoleRedirect($user);
 
-//     // }
-// }
-
+    }
+}
