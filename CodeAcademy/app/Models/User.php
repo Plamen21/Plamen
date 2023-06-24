@@ -18,13 +18,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
         'username',
         'email',
-        'country',
-        'city',
-        'phone',
         'password',
     ];
 
@@ -48,16 +43,33 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function student(){
+    public function student()
+    {
         return $this->hasOne(Student::class);
     }
-    public function client(){
+
+    public function client()
+    {
         return $this->hasOne(Client::class);
     }
-    public function trainer(){
+
+    public function trainer()
+    {
         return $this->hasOne(Trainer::class);
     }
 
+    public function role()
+    {
+        return $this->hasOne(Role::class, 'user_id', 'id')->withDefault([
+            'role' => 'user',
+        ]);
+    }
+
+
+    public function hasRole($roleName)
+    {
+        return $this->role->role === $roleName;
+    }
 
 
 }

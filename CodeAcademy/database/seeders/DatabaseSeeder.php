@@ -23,6 +23,10 @@ class DatabaseSeeder extends Seeder
             ModulesLectureSeeder::class,
             TrainersSeeder::class,
             TrainersCoursesSeeder::class,
+            StudentAbsenceSeeder::class,
+            StudentHomeworkSeeder::class,
+            StudentProjectSeeder::class,
+            RoleTableSeeder::class,
             // Add other seeder classes here
         ]);
     }

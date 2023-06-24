@@ -31,15 +31,25 @@ class UserSeeder extends Seeder
                 'email' => $faker->unique()->safeEmail,
                 'email_verified_at' => $faker->dateTimeBetween('-1 year', 'now'),
                 'password' => Hash::make('password123'),
-                'role' => 'user',
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
                 'updated_at' => now(),
             ];
         }
+        $users[]=[
+            'username'=>'martin',
+            'email'=>'martin.yordanov.my@gmail.com',
+            'email_verified_at' => $faker->dateTimeBetween('-1 year', 'now'),
+            'password' => Hash::make('12345678'),
+            'remember_token' => Str::random(10),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ];
 
         // Insert users into the table
         DB::table('users')->insert($users);
+
+
     }
 
 }

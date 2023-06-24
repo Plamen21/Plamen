@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
 
 class PublicUserController extends Controller
@@ -13,4 +14,5 @@ class PublicUserController extends Controller
     public function info(){
         return view('PublicUserViews.publicInfo');
     }
+
 }

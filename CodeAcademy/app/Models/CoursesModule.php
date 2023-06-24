@@ -11,9 +11,19 @@ class CoursesModule extends Model
     protected $table='courses_modules';
 
     public function courses(){
-        return $this->belongsToMany(Course::class,'courses_modules');
+        return $this->belongsTo(Course::class);
     }
     public function lecture(){
-        return $this->belongsToMany(ModulesLecture::class,'modules_lectures');
+        return $this->hasMany(ModulesLecture::class,'module_id');
+    }
+    public function absences()
+    {
+        return $this->hasMany(StudentAbsence::class, 'module_id');
+    }
+    public function homework(){
+        return $this->hasMany(StudentHomework::class,'module_id');
+    }
+    public function projects(){
+        return $this->hasMany(StudentProject::class,'module_id');
     }
 }

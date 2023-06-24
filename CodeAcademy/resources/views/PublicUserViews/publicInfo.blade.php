@@ -1,13 +1,13 @@
 @extends('layouts.publicUserNavigation')
 @section('content')
-   <style> .center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px;
-    }
-   </style>
+    <style> .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+        }
+    </style>
     <div class=".center">
         <p style="text-align: center;padding: 40px">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis efficitur est
